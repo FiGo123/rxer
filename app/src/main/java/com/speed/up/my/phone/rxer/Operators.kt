@@ -5,13 +5,14 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable
 
-class Operators {
 
-    val mList = mutableListOf(1,2,3,4,5,6,7,8,9,10,11,12)
-    val arraysNum = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12)
-    val arraysNum2 = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12)
+
+
+
     fun justOperator(){
+        val mList = mutableListOf(1,2,3,4,5,6,7,8,9,10,11,12)
         val observable = Observable.just(mList)
+
         val observer = object : Observer<List<Int>> {
             override fun onSubscribe(d: Disposable) {
                 Log.d(MainActivity.TAG, "onSubscribe")
@@ -36,6 +37,7 @@ class Operators {
     }
 
     fun fromOperator(){
+        val arraysNum = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12)
         val observable = Observable.fromArray(arraysNum)
 
         val observer = object : Observer<Array<Int>>{
@@ -60,4 +62,7 @@ class Operators {
         observable.subscribe(observer)
     }
 
-}
+    fun rangeOperator():Observable<Int>{
+        return Observable.range(1,10)
+    }
+
